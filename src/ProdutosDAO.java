@@ -56,7 +56,7 @@ public class ProdutosDAO {
 
         return listagem;
     }
-    
+
     public void venderProduto(int id) {
         conn = new conectaDAO().connectDB();
         String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
@@ -73,11 +73,11 @@ public class ProdutosDAO {
     public ArrayList<ProdutosDTO> listarProdutosVendidos() {
         String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
         conn = new conectaDAO().connectDB();
-        
+
         try {
             prep = conn.prepareStatement(sql);
             resultset = prep.executeQuery();
-            
+
             while (resultset.next()) {
                 ProdutosDTO p = new ProdutosDTO();
                 p.setId(resultset.getInt("id"));
